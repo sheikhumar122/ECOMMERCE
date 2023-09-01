@@ -1,0 +1,12 @@
+
+# dependencies
+/node_modules
+/frontend/node_modules
+
+
+
+
+# misc
+/backend/config/config.env
+
+

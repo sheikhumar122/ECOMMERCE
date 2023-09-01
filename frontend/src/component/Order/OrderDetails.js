@@ -100,7 +100,7 @@ const OrderDetails = () => {
                <br/>
               <span>
 
-              <h1>KAISA LAGA MERA MAZAK</h1>
+              <h1>THANK YOU</h1>
               </span>
               {/* <div className="orderDetailsCartItemsContainer">
                 {order.orderItems &&

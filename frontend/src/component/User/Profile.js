@@ -5,7 +5,7 @@ import Loader from "../Layout/Loader/loader";
 import { Link, useNavigate } from "react-router-dom";
 import "./Profile.css";
 
-const Profile = ({}) => {
+const Profile = () => {
   const { user, loading, isAuthenticated } = useSelector((state) => state.user);
   const navigate = useNavigate();
   useEffect(() => {
