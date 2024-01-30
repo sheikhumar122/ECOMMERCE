@@ -34,11 +34,11 @@ jobs:
           npm ci --legacy-peer-deps
           cd ../backend
           npm ci --legacy-peer-deps
-      - name: Build
-        run: |
-          cd frontend
-          npm run build
-          cd ..
+      # - name: Build
+      #   run: |
+      #     cd frontend
+      #     npm run build
+      #     cd ..
          
       - name: Start Backend
         run: |
