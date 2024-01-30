@@ -21,16 +21,16 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-      - run: npm install
+      - run: npm install --legacy-peer-deps
       - run: |
           touch .env
           echo "${{secrets.PROD_VAR}}" > .env
       - name: Install Dependencies
         run: |
           cd frontend
-          npm install
+          npm install --legacy-peer-deps
           cd ../backend
-          npm install
+          npm install --legacy-peer-deps
       # - name: Build
       #   run: |
       #     cd frontend
