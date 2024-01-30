@@ -28,7 +28,7 @@ jobs:
     - run: npm ci
     - run: |
       touch .env
-      echo "${{secrets.PROD_VAR}} > .env
+      echo "${{secrets.PROD_VAR}}" > .env
     - name: Install Dependencies
       run: |
         cd frontend
