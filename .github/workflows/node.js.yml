@@ -38,8 +38,8 @@ jobs:
         run: |
           cd frontend
           npm run build
-          cd ../backend
-          # Additional build steps for the backend go here
+          cd ..
+         
       - name: Start Backend
         run: |
           cd backend
