@@ -10,48 +10,43 @@ on:
 
 jobs:
   build:
-
-    runs-on:self-hosted
+    runs-on: self-hosted
 
     strategy:
       matrix:
         node-version: [18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: |
-      touch .env
-      echo "${{secrets.PROD_VAR}}" > .env
-    - name: Install Dependencies
-      run: |
-        cd frontend
-        npm ci
-        cd ../backend
-        npm ci
-
-    - name: Build
-      run: |
-        cd frontend
-        npm run build
-        cd ../backend
-        # Additional build steps for the backend go here
-
-    - name: Start Backend
-      run: |
-        cd backend
-        npm run dev &
-        # Run the backend in the background
-
-    - name: Start Frontend
-      run: |
-        cd frontend
-        npm start &
-        # Run the frontend in the background
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: npm ci
+      - run: |
+          touch .env
+          echo "${{secrets.PROD_VAR}}" > .env
+      - name: Install Dependencies
+        run: |
+          cd frontend
+          npm ci
+          cd ../backend
+          npm ci
+      - name: Build
+        run: |
+          cd frontend
+          npm run build
+          cd ../backend
+          # Additional build steps for the backend go here
+      - name: Start Backend
+        run: |
+          cd backend
+          npm run dev &
+          # Run the backend in the background
+      - name: Start Frontend
+        run: |
+          cd frontend
+          npm start &
+          # Run the frontend in the background
 
