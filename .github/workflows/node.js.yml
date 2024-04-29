@@ -1,0 +1,49 @@
+
+name: Node.js CI/CD
+
+on:
+  push:
+    branches: [ "master" ]
+ 
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: npm ci --legacy-peer-deps
+      - run: |
+          touch .env
+          echo "${{secrets.PROD_VAR}}" > .env
+      - name: Install Dependencies
+        run: |
+          cd frontend
+          npm ci --legacy-peer-deps
+          cd ../backend
+          npm ci --legacy-peer-deps
+      # - name: Build
+      #   run: |
+      #     cd frontend
+      #     npm run build
+      #     cd ..
+         
+      - name: Start Backend
+        run: |
+          cd backend
+          npm run dev &
+          # Run the backend in the background
+      - name: Start Frontend
+        run: |
+          cd frontend
+          npm start &
+          # Run the frontend in the background here
