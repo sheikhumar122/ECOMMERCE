@@ -1,5 +1,6 @@
 .banner {
-    background-image: linear-gradient(to right,blue,#653dc0);
+    /* background-image: linear-gradient(to right,blue,#653dc0); */
+    background-image: url('https://archive.smashing.media/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/781ad1bb-dbe8-42ce-bb4e-ccb2844fcb8a/bonobos-opt.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -13,6 +14,7 @@
   } 
  .banner  h1 {
     margin: 5vmax;
+    color: rgb(251, 251, 251);
   
     font: 600 2.5vmax "Roboto";
   }
